@@ -9,7 +9,11 @@ Created on Sun Aug 25 13:05:23 2024
 import streamlit as st
 
 # Define the chatbot function
-def chatbot(text):
+
+'''
+Need to replace this with a proper LLM API, like GPT4.0, DistilBERT, facebook/blenderbot-small
+'''
+def chatbot(text):    
     responses = {
         "Hi": "Hello!",
         "How are you?": "I am fine, thanks! How are you?",
