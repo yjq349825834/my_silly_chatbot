@@ -11,7 +11,7 @@ import streamlit as st
 # Define the chatbot function
 
 '''
-Need to replace this with a proper LLM API, like GPT4.0, DistilBERT, facebook/blenderbot-small
+Need to replace this with a proper LLM API, like GPT4.0, DistilBERT, facebook/blenderbot-small.
 '''
 def chatbot(text):    
     responses = {
