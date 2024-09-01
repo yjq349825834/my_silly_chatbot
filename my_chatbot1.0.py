@@ -69,8 +69,8 @@ def main():
         st.session_state.chat_history.append(("user", user_input))
         st.session_state.chat_history.append(("chatbot", response))
 
-    # Debugging: Print chat history to verify its structure
-    st.write("Chat history (debug):", st.session_state.chat_history)
+    # # Debugging: Print chat history to verify its structure
+    # st.write("Chat history (debug):", st.session_state.chat_history)
 
     # Display chat history with alignment
     for role, message in st.session_state.chat_history:
