@@ -10,7 +10,7 @@ import streamlit as st
 import torch
 
 # Check if CUDA (GPU) is available
-device = 0 if torch.cuda.is_available() else -1
+# device = 0 if torch.cuda.is_available() else -1
 
 # Define the chatbot function
 
@@ -27,8 +27,7 @@ def chatbot(text):
     # Return the response if it's in the predefined responses, else default message
     return responses.get(text, "Sorry, I don't understand that.")
 
-chatbot2 = pipeline(task="text2text-generation", model="facebook/blenderbot-400M-distill", device=device,
-                    torch_dtype=torch.float16 if device == 0 else None)
+chatbot2 = pipeline(task="text2text-generation", model="facebook/blenderbot-400M-distill")
 
 
 # Streamlit GUI
