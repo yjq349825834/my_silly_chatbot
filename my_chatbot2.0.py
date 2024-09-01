@@ -7,7 +7,7 @@ Created on Sun Aug 25 14:27:21 2024
 
 from transformers import pipeline
 import streamlit as st
-import torch
+# import torch
 
 # Check if CUDA (GPU) is available
 # device = 0 if torch.cuda.is_available() else -1
