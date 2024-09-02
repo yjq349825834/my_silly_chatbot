@@ -28,7 +28,7 @@ def chatbot(text):
     return responses.get(text, "Sorry, I don't understand that.")
 
 try:
-    chatbot2 = pipeline(task="text2text-generation", model="facebook/blenderbot-400M-distill")
+    chatbot2 = pipeline(task="text2text-generation", model="facebook/blenderbot_small-90M")
 except Exception as e:
     st.error(f"Failed to load the model: {e}")
 
