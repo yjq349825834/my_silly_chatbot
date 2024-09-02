@@ -27,7 +27,10 @@ def chatbot(text):
     # Return the response if it's in the predefined responses, else default message
     return responses.get(text, "Sorry, I don't understand that.")
 
-chatbot2 = pipeline(task="text2text-generation", model="facebook/blenderbot-400M-distill")
+try:
+    chatbot2 = pipeline(task="text2text-generation", model="facebook/blenderbot-400M-distill")
+except Exception as e:
+    st.error(f"Failed to load the model: {e}")
 
 
 # Streamlit GUI
