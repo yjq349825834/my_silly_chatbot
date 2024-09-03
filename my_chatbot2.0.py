@@ -15,7 +15,7 @@ import streamlit as st
 # Define the chatbot function
 
 '''
-This chatbot is now powered by the facebook/blenderbot_small model, which is free but not very clever.
+This chatbot is now powered by the facebook/blenderbot_small model, which is free...so not very clever.
 
 '''
 
