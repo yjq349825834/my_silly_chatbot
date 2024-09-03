@@ -15,7 +15,7 @@ import streamlit as st
 # Define the chatbot function
 
 '''
-Need to replace this with a proper LLM API, like GPT4.0, DistilBERT, facebook/blenderbot-small.
+This chatbot is now powered by the facebook/blenderbot_small model, which is free but not very clever.
 
 '''
 
