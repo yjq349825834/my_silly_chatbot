@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 8501
 
 # Define the command to run the application
-CMD ["streamlit", "run", "my_chatbot.py", "--server.port=8501", "--server.address=0.0.0.0"]
+CMD ["streamlit", "run", "my_chatbot2.0.py", "--server.port=8501", "--server.address=0.0.0.0"]
