@@ -15,13 +15,15 @@ import streamlit as st
 # Define the chatbot function
 
 '''
-This chatbot is now powered by the facebook/blenderbot_small model, which is free...so not very clever.
+This chatbot uses the free <facebook/blenderbot_small> model, which currently has limited capabilities. 
+Development is ongoing, with plans to enhance its performance by incorporating domain-specific knowledge and further fine-tuning.
 
 '''
 
 def chatbot(text):    
     responses = {
-        "Who is Jiaqi?": "Jiaqi Ye is currently working as a Research Scientist, specializing in applied AI, data science, and robotic technologies. Check out his home page: https://bit.ly/JiaqiYe-HomePage for more details!"
+        "Who is Jiaqi?": "Jiaqi Ye is currently working as a Research Scientist, specializing in applied AI, data science, sensor, and robotic technologies. Check out his home page: https://bit.ly/JiaqiYe-HomePage for more details!",
+         "What is BCRRE?": "The Birmingham Centre for Railway Research and Education (BCRRE) is Europe’s largest academic-based group that provides world-class research, education, and innovation to the global rail industry."
     }
     return responses.get(text, None)
 
@@ -33,12 +35,15 @@ except Exception as e:
 
 def keyword_match(text):
 
-    keywords = ["Jiaqi", "Jiaqi Ye"]
+    text_lower = text.lower()
 
-    for keyword in keywords:
-        if keyword.lower() in text.lower():
-            # Forward the request to the chatbot for a predefined response
-            return chatbot("Who is Jiaqi?")  # Return a general response about Jiaqi
+    # Check for variations of "Jiaqi"
+    if "jiaqi" in text_lower or "jiaqi ye" in text_lower:
+        return chatbot("Who is Jiaqi?")
+    
+    # Check for variations of "BCRRE"
+    if "bcrre" in text_lower:
+        return chatbot("What is BCRRE?")
     return None
 
 # Streamlit GUI
@@ -62,7 +67,7 @@ def main():
         st.session_state.chat_history = []
 
     # Text input for user messages
-    user_input = st.text_input("Message to Jiaqi's chatbot': ", "")
+    user_input = st.text_input("Message to Jiaqi's chatbot': ")
 
     if st.button("Send") and user_input:
         # Cache the response to minimize repeated computation
