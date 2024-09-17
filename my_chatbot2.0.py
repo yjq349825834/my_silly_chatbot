@@ -21,17 +21,25 @@ This chatbot is now powered by the facebook/blenderbot_small model, which is fre
 
 def chatbot(text):    
     responses = {
-        "Hi": "Hello!",
-        "How are you?": "I am fine, thanks! How are you?",
+        "Who is Jiaqi?": "Jiaqi Ye is currently working as a Research Scientist, specializing in applied AI, data science, and robotic technologies. Check out his home page: https://bit.ly/JiaqiYe-HomePage for more details!"
     }
-    # Return the response if it's in the predefined responses, else default message
-    return responses.get(text, "Sorry, I don't understand that.")
+    return responses.get(text, None)
 
 try:
     chatbot2 = pipeline(task="text2text-generation", model="facebook/blenderbot_small-90M")
 except Exception as e:
     st.error(f"Failed to load the model: {e}")
 
+
+def keyword_match(text):
+
+    keywords = ["Jiaqi", "Jiaqi Ye"]
+
+    for keyword in keywords:
+        if keyword.lower() in text.lower():
+            # Forward the request to the chatbot for a predefined response
+            return chatbot("Who is Jiaqi?")  # Return a general response about Jiaqi
+    return None
 
 # Streamlit GUI
 # def main():
@@ -59,13 +67,15 @@ def main():
     if st.button("Send") and user_input:
         # Cache the response to minimize repeated computation
         @st.cache_data(show_spinner=False)
-        def get_response(text, bot="chatbot2"):
-            if bot == "chatbot2":    
-                return chatbot2(text)[0]['generated_text'] 
-            elif bot == "chatbot":
-                return chatbot(text)
+        def get_model_response(text):
+            return chatbot2(text)[0]['generated_text'] 
         # Generate response
-        response = get_response(user_input, bot="chatbot2")
+        user_response = keyword_match(user_input)
+
+        if user_response:
+            response = user_response
+        else:
+            response = get_model_response(user_input)
 
         # Append the user input and response to the chat history
         st.session_state.chat_history.append(("user", user_input))
