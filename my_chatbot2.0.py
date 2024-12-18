@@ -3,6 +3,8 @@
 Created on Sun Aug 25 14:27:21 2024
 
 @author: Jiaqi Ye
+
+usuage: streamlit run .\my_chatbot2.0.py
 """
 
 from transformers import pipeline
