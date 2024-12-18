@@ -1,5 +1,5 @@
-transformers
+transformers == 4.44.2
 streamlit
-torch
-tf-keras
-tensorflow
+torch == 2.1.0
+tf-keras 
+tensorflow == 2.15.0
